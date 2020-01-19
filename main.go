@@ -1,19 +1,11 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"github.com/galen-hlh/micro-sdk/go/proto/helper"
 	"github.com/micro/go-micro"
+	"mirco-service/modules/service/snowflake"
 )
-
-type Helper struct{}
-
-func (g *Helper) GetDistributeId(ctx context.Context, req *helper.IdRequest, rsp *helper.IdResponse) error {
-	fmt.Println(1)
-	rsp.Result = 12345
-	return nil
-}
 
 func main() {
 	// Create a new service. Optionally include some options here.
@@ -25,7 +17,7 @@ func main() {
 	service.Init()
 
 	// Register handler
-	_ = helper.RegisterHelperHandler(service.Server(), new(Helper))
+	_ = helper.RegisterHelperHandler(service.Server(), new(snowflake.SnowFlake))
 
 	// Run the server
 	if err := service.Run(); err != nil {
