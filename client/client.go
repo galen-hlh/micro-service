@@ -3,8 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/galen-hlh/micro-sdk/go/proto/helper"
 	"github.com/micro/go-micro"
-	"mirco-service/proto/helper"
 )
 
 func main() {
